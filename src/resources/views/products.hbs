@@ -1,0 +1,57 @@
+{{!-- <h1>{{product}}</h1> --}}
+<section id="breadcrumb-wrapper" class="">
+    <div class="breadcrumb-overlay">
+
+    </div>
+    <div class="breadcrumb-small text-left">
+        <a href="/" class="a"><i class="fa fa-home" aria-hidden="true"></i> Danh sách sản phẩm - 3H STORE - Thương hiệu quần áo nam may sẵn hàng đầu Việt Nam</a>
+    </div>
+    <div class="breadcrumb-content text-center">
+        <div class="breadcrumb-big">
+
+            <div class="title-banner-cart">
+                3H STORE - Thương hiệu quần áo may sẵn hàng đầu Việt Nam
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="text-center" style="font-size: 25px; margin-top: 20px; font-weight:900  ">DANH SÁCH SẢN PHẨM </div>
+
+<div id="features" class="cards-1">
+    <div class="container">
+        <div class="wrapper">
+            <div class="row">
+                  {{#each products}}
+                <div class="col">
+                    <a href="/products/{{this.slug}}">
+                        <img src="./images/Suit1.webp"> 
+                    </a>
+                    <a href="/products/{{this.slug}}">
+                        <p class="product-title">{{this.productName}}</p>
+                    </a>
+                    <p class="product-price">{{this.price}}đ</p>
+                </div>
+                  {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav data-pagination>
+    <a href=# disabled><i class=ion-chevron-left></i></a>
+    <ul>
+        <li class=current><a href=#1>1</a>
+            <li><a href=#2>2</a>
+                <li><a href=#3>3</a>
+                    <li><a href=#4>4</a>
+                        <li><a href=#5>5</a>
+                            <li><a href=#6>6</a>
+                                <li><a href=#7>7</a>
+                                    <li><a href=#8>8</a>
+                                        <li><a href=#9>9</a>
+                                            <li><a href=#10>…</a>
+                                                <li><a href=#41>41</a>
+    </ul>
+    <a href=#2><i class=ion-chevron-right></i></a>
+</nav>
