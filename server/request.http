@@ -1,0 +1,62 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username":"VinhXuan112341511",
+    "password":"123",
+    "roleid":"1"
+
+}
+###
+POST http://localhost:5000/api/Kh/registerKH
+Content-Type: application/json
+
+{
+    "username":"VinhXua12n1112111112121212123121212",
+    "phonenumber":"12121122111121a1212s111212211212121212",
+    "email":"asasas112121211121112111121212212"
+
+}
+
+###
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "username":"VinhXuan112341511",
+    "password":"123"
+}
+###
+GET http://localhost:5000/api/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjRlNWUwNzlhZmI0NWQ2OWMyMzRmYjciLCJpYXQiOjE2NDkzMDMyOTl9.7NdEbUhkvzDBjLcc5duPgnGHSwsiZTHYa57h6_HOTlM
+
+# {
+#     "title":"PT",
+#     "description": "Shopping",
+#     "url":"facebook.com/hadat921",
+#     "status":"GYM KÈM PT",
+    
+    
+# }
+
+###
+GET http://localhost:5000/api/posts//getAll
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZTE0MzZmNzBjYTQ5NWU2NTJlNjIiLCJpYXQiOjE2NDg3ODE0NjZ9.g3WRLP1ZIF115mY0KZ_irclBS6hvWQTi5oX1S2uETMo
+
+###
+PUT  http://localhost:5000/api/posts/624801e73b48d4944703f5bd
+Content-Type: application/json
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZTE0MzZmNzBjYTQ5NWU2NTJlNjIiLCJpYXQiOjE2NDg3ODE0NjZ9.g3WRLP1ZIF115mY0KZ_irclBS6hvWQTi5oX1S2uETMo
+
+{
+    "title":"Vue",
+    "description":"Hihi",
+    "url":"https://youtube.com",
+    "status":"LEARNING"
+}
+
+###
+DELETE http://localhost:5000/api/posts/624801e73b48d4944703f5bd
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZTE0MzZmNzBjYTQ5NWU2NTJlNjIiLCJpYXQiOjE2NDg3ODE0NjZ9.g3WRLP1ZIF115mY0KZ_irclBS6hvWQTi5oX1S2uETMo
+
+
