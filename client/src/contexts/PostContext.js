@@ -6,12 +6,14 @@ import axios from 'axios'
 export const PostContext = createContext()
 
 const PostContextProvider = ({ children }) => {
+	
 	// State
 	const [postState, dispatch] = useReducer(postReducer, {
 		post: null,
 		posts: [],
 		postsLoading: true
 	})
+
 	//Modal
 	const [showAddPostModal, setShowAddPostModal] = useState(false)
 	const [showUpdatePostModal, setShowUpdatePostModal] = useState(false)
@@ -20,10 +22,11 @@ const PostContextProvider = ({ children }) => {
 		message: '',
 		type: null
 	})
+	
     // Get all posts
 	const getPosts = async () => {
 		try {
-			const response = await axios.get(`${apiUrl}/posts/getAll`)
+			const response = await axios.get(`${apiUrl}/post/getAll`)
 			if (response.data.success) {
 				dispatch({ type: POSTS_LOADED_SUCCESS, payload: response.data.posts })
 			}
@@ -35,7 +38,7 @@ const PostContextProvider = ({ children }) => {
 	// Add post
 	const addPost = async newPost => {
 		try {
-			const response = await axios.post(`${apiUrl}/posts`, newPost)
+			const response = await axios.post(`${apiUrl}/post/add`, newPost)
 			if (response.data.success) {
 				dispatch({ type: ADD_POST, payload: response.data.post })
 				return response.data
@@ -50,13 +53,14 @@ const PostContextProvider = ({ children }) => {
 	// Delete post
 	const deletePost = async postId => {
 		try {
-			const response = await axios.delete(`${apiUrl}/posts/${postId}`)
+			const response = await axios.delete(`${apiUrl}/post/delete${postId}`)
 			if (response.data.success)
 				dispatch({ type: DELETE_POST, payload: postId })
 		} catch (error) {
 			console.log(error)
 		}
 	}
+	
 	// Find post when user is updating post
 	const findPost = postId => {
 		const post = postState.posts.find(post => post._id === postId)
@@ -67,7 +71,7 @@ const PostContextProvider = ({ children }) => {
 	const updatePost = async updatedPost => {
 		try {
 			const response = await axios.put(
-				`${apiUrl}/posts/${updatedPost._id}`,
+				`${apiUrl}/post/update/${updatedPost._id}`,
 				updatedPost
 			)
 			if (response.data.success) {

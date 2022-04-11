@@ -50,24 +50,18 @@ useEffect(()=> loadUser(),[])
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
                 await loadUser()
                 console.log ('current check',response.data)
-                
-
             return response.data
-            
-
         } catch (error) {
             if (error?.response?.data) return error?.response?.data
             else return { success: false, message: error.message }
-
         }
-        
-
     }
-    //Register
-    //Login
+ 
+
     const registerUser = async userForm => { 
         try {
             userForm.roleid = 0;
+
             axios = axios.default
             const response = await axios(
                 {
@@ -81,7 +75,7 @@ useEffect(()=> loadUser(),[])
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken)
                 await loadUser()
 
-            return response.data // check admin true or false and handle
+            return response.data
 
         } catch (error) {
             if (error?.response?.data) return error?.response?.data

@@ -11,35 +11,35 @@ const AddPostModal = () => {
     //State
     const [newPost, setNewPost] = useState({
       title: '',
-      description: '',
-      url: '',
-      status: 'TỰ TẬP'  
+      description: ''
     })
 
-    const {title, description, url} = newPost
+    const {title, description} = newPost
     const onChangeNamePostForm = event => setNewPost({...newPost,[event.target.name]: event.target.value})
     const closeDialog = () => {
         resetAddPostData()
     }
-// xu li nut Learnit
+
     const onSubmit = async event => {
         event.preventDefault()
+
         const{success, message} = await addPost(newPost)
        resetAddPostData()
        setShowToast({show: true, message, type: success ? 'success': 'danger'})
     }
+
     const resetAddPostData = () => {
-        setNewPost({ title:'', description: '', url: '', status:'GYM KÈM PT'})
+        setNewPost({ title:'', description: '', status:''})
         setShowAddPostModal(false)
     }
 
-
-
     return (
+
         <Modal show ={showAddPostModal} animation ={true} onHide = {closeDialog}> 
             <Modal.Header closeButton>
-                <Modal.Title>Thêm khóa tập</Modal.Title>
+                <Modal.Title>Thêm khóa học mới</Modal.Title>
             </Modal.Header>
+
             <Form onSubmit={onSubmit}>
                 <Modal.Body>
                     <Form.Group>
@@ -47,32 +47,36 @@ const AddPostModal = () => {
                         value={title}
                         onChange={onChangeNamePostForm}
                          />
-                        <Form.Text id='title-help' muted> Ghi chú</Form.Text>
                     </Form.Group>
 
-                    <Form.Group>
+                    <Form.Group className='mt-2'>
                         <Form.Control as ='textarea' rows={3} placeholder='Thêm Chú Thích'
                         name='description'
                         value={description}
                         onChange={onChangeNamePostForm} />
                      </Form.Group>
-                     <Form.Group>
-                         <Form.Control type = 'text' placeholder='Link video khóa tập' 
-                             name = 'url'
-                             value={url}
-                        onChange={onChangeNamePostForm}
-                         />
-                     </Form.Group>
+
+                     <Form.Group className='mt-2'>
+						<Form.Control
+							as='select'
+							name='status'
+							onChange={onChangeNamePostForm}
+						>
+							<option value='NHẬP MÔN'>NHẬP MÔN</option>
+							<option value='TRUNG BÌNH'>TRUNG BÌNH</option>
+							<option value='NÂNG CAO'>NÂNG CAO</option>
+						</Form.Control>
+					</Form.Group>
                 </Modal.Body>
+
                 <Modal.Footer>
-                    <Button variant='secondary' onClick={closeDialog}> Cancel </Button>
-                    <Button variant ='primary' type='submit'>Thêm khóa tập
-                    </Button>
+                    <Button variant='secondary' onClick={closeDialog}> Hủy </Button>
+                    <Button variant ='primary' type='submit'>Thêm khóa học</Button>
                 </Modal.Footer>
+
             </Form>
         </Modal>
     )
 }
-
 
 export default AddPostModal

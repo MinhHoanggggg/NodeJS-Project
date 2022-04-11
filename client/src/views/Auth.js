@@ -25,21 +25,18 @@ const Auth = ({ authRoute }) => {
 
     body = (
         <>
-
             {authRoute === 'login' && <LoginForm />}
-            
-
-
             {authRoute === 'register' && <RegisterForm />}
-
             {authRoute === 'registerKH' && <DkkHForm />}
         </>)
+
+
     return (
         <div className='landing'>
             <div className='dark-overlay'>
                 <div className='landing-inner'>
-                    <h1>Để Có Một Body Và Sức Khỏe Tốt</h1>
-                    <h4>Hãy là thành viên để sử dụng dịch vụ của Gateway Gym!</h4>
+                    <h1>The Future Begins Here</h1>
+                    <h4>Đã có hơn 136,554++ lượt học và tìm kiếm thông tin tại 3H.com!</h4>
                     {body}
                 </div>
             </div>

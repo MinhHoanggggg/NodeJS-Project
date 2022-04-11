@@ -36,11 +36,6 @@ const UpdatePostModal = () => {
 		setShowToast({ show: true, message, type: success ? 'success' : 'danger' })
 	}
 
-	// const resetAddPostData = () => {
-	// 	setNewPost({ title: '', description: '', url: '', status: 'TO LEARN' })
-	// 	setShowAddPostModal(false)
-	// }
-
 	return (
 		<Modal show={showUpdatePostModal} onHide={closeDialog}>
 			<Modal.Header closeButton>

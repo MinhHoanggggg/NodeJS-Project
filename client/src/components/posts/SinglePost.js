@@ -6,16 +6,12 @@ import ActionButtons from './ActionButtons'
 import { AuthContext } from '../../contexts/AuthContext'
 import { useContext, useEffect } from 'react'
 
+const SinglePost = ({ post: { _id, status, title, description, url, user}  }) => (
 
-
-const SinglePost = ({ post: { _id, status, title, description, url,user}  }) => (
-	
-	
-	
 	<Card
 		className='shadow'
 		border={
-			status ==='GYM KÈM PT' ?'success' : status === 'YOGA KÈM PT' ? 'warning' : 'danger'
+			status ==='NHẬP MÔN' ? 'success' : status === 'TRUNG BÌNH' ? 'warning' : 'danger'
 		}
 	>
 		<Card.Body>
@@ -23,14 +19,15 @@ const SinglePost = ({ post: { _id, status, title, description, url,user}  }) => 
 				<Row>
 					<Col>
 						<p className='post-title'>{title}</p>
-						<Badge bg={status === 'GYM KÈM PT' ? 'success': (status === 'YOGA KÈM PT' ? 'warning': 'danger')}
+						<Badge bg={status === 'NHẬP MÔN' ? 'success': (status === 'TRUNG BÌNH' ? 'warning': 'danger')}
 						>
-							{status}
+						{status}
 						</Badge>
 					</Col>
+					
 					<Col className='text-right'>
 						<ActionButtons url={url} _id={_id} />
-						<p className='text-right'>ID :{user}</p>
+						{/* <p className='text-right'>ID :{user}</p> */}
 					</Col>
 				</Row>
 			</Card.Title>

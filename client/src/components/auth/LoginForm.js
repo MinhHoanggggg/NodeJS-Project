@@ -4,42 +4,39 @@ import { Link } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import AlertMessage from '../layout/AlertMessage'
+
 const LoginForm = () => {
+
     //Context
     const { loginUser } = useContext(AuthContext)
-    // //Router
-    // const history = useHistory()
+
     //Local state
     const [LoginForm, setLoginForm] = useState({
         username: '',
         password: ''
     })
+
     const [alert, setAlert] = useState(null)
+
     const { username, password } = LoginForm
+
     const onChangeLoginForm = event => setLoginForm({ ...LoginForm, [event.target.name]: event.target.value })
+
     const login = async event => {
         event.preventDefault()
 
         try {
             const loginData = await loginUser(LoginForm)
             if (!loginData.success) {
-                // history.push('/dashboard')
                 setAlert ({type:'danger', message:loginData.message})
                 setTimeout(()=> setAlert(null),5000)
-
             }
-            
-            
-
-
-
+ 
         } catch (error) {
             console.log(error)
-
         }
-
-
     }
+
     return (
         <> <Form className='my-4' onSubmit={login}>
         <AlertMessage info={alert}/>
@@ -73,4 +70,5 @@ const LoginForm = () => {
         </>
     )
 }
+
 export default LoginForm  

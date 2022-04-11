@@ -6,10 +6,7 @@ import { PostContext } from '../../contexts/PostContext'
 import { AuthContext } from '../../contexts/AuthContext'
 import { useContext, useState } from 'react'
 
-
-
 const ActionButtons = ({ url, _id,  }) => {
-	
 	
 	const { deletePost, findPost, setShowUpdatePostModal } = useContext(
 		PostContext
@@ -22,11 +19,7 @@ const ActionButtons = ({ url, _id,  }) => {
 		setShowUpdatePostModal(true)
 	}
 	 
-	
-
-
 	if(roleid == 1)
-	
 	return (
 		<>	
 			<Button className='post-button' href={url} target='_blank'>
@@ -44,35 +37,14 @@ const ActionButtons = ({ url, _id,  }) => {
 	else
 	
 	{
-		return(<>
-		
-		         
+		return(<>      
 				<div id ="demo">Đăng kí khóa tập ngay!</div>
 				<Button type="button" >
 					Đăng Kí Khóa Tập
-				</Button>
-
-			
-
-				
-			
-				
+				</Button>		
 				</>
-
-
-				
-		
-		
-		)
-		
-
-		
-		};
-		
-	
-
-	
-	
+			)
+		};	
 }
 
 export default ActionButtons

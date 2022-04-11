@@ -1,13 +1,9 @@
-// const {verify} = require('argon2')
 const express = require('express')
 const router = express.Router()
 const verifyToken = require('../middleware/auth')
 const Post = require('../models/Post')
+const Course = require('../models/Course')
 
-
-//@route GET api/posts
-//@desc GET Post
-// @access Private
 router.get('/', verifyToken, async (req, res) => {
     try {
         const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
@@ -19,6 +15,7 @@ router.get('/', verifyToken, async (req, res) => {
     }
 
 })
+
 router.get('/getAll', verifyToken, async (req, res) => {
     try {
         const posts = await Post.find({  })
@@ -30,28 +27,36 @@ router.get('/getAll', verifyToken, async (req, res) => {
 
 })
 
-//@route POST api/posts
-//@desc Create Post
-// @access Private
+router.get('/getCourse', verifyToken, async (req, res) => {
+    try {
 
-router.post('/', verifyToken, async (req, res) => {
-    const { title, description, url, status } = req.body
+        const course = await Course.find({ post: req._id})
+        res.json({ success: true, course })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: 'Internal error server 12' })
+    }
 
-    //Simple validation
+})
+
+//add
+router.post('/add', verifyToken, async (req, res) => { 
+    const { title, description, status } = req.body
+
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
+
     try {
-        //check url co bat dau = https khong, neu co thi lay luon url do, nguoc lai se tu them
+        
         const newPost = new Post({
-            title, description, url: (url.startsWith('https://')) ? url : `https://${url}`,
-            status: status || 'TỰ TẬP',
+            title, 
+            description,
+            status,
             user: req.userId
-            
         })
+
         await newPost.save()
-        res.json({ success: true, message: 'Thêm khóa tập thành công', post: newPost })
-
-
+        res.json({ success: true, message: 'Thêm khóa học thành công', post: newPost })
 
     } catch (error) {
 
@@ -60,51 +65,40 @@ router.post('/', verifyToken, async (req, res) => {
 
     }
 })
-//@route PUT api/posts
-//@desc UPDATE Post
-// @access Private
-router.put('/:id', verifyToken, async (req, res) => {
-    const { title, description, url, status } = req.body
+
+router.put('/update:id', verifyToken, async (req, res) => {
+    const { title, description, status } = req.body
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
     try {
-        //check url co bat dau = https khong, neu co thi lay luon url do, nguoc lai se tu them
+        
         let updatedPost = {
-            title,
-            description: description || '',
-            url: ((url.startsWith('https://')) ? url : `https://${url}`) || '',
-            status: status || 'GYM KÈM  PT'
+            title, 
+            description,
+            status
         }
 
         const postUpdateCondition = { _id: req.params.id, user: req.userId }
         updatedPost = await Post.findOneAndUpdate(postUpdateCondition, updatedPost, { new: true })
-        //user not authorised to update post or post not found
 
         if (!updatedPost)
             return res.status(401).json({ success: false, message: 'Post k tim thay hoac user not authorrised' })
 
         res.json({ success: true, message: 'Done progess', post: updatedPost })
 
-
-
     } catch (error) {
 
         console.log(error)
         res.status(500).json({ success: false, message: 'Internal server error' })
-
     }
 })
-//@route DELETE api/posts
-//@desc DELETE Post
-// @access Private
-router.delete('/:id', verifyToken, async (req, res) => {
+
+router.delete('/delete:id', verifyToken, async (req, res) => {
     try {
-       
-     
+
         const postDeleteCondition = { _id: req.params.id}
         const deletedPost = await Post.findOneAndDelete(postDeleteCondition)
 
-        //User not authorised or post not found 
         if (!deletedPost)
             return res.status(401).json({ success: false, message: 'Post k tim thay hoac user not authorrised' })
         res.json({ success: true, post: deletedPost })
