@@ -3,10 +3,10 @@ const router = express.Router()
 const verifyToken = require('../middleware/auth')
 const Course = require('../models/Course')
 
-router.get('/:id', verifyToken, async (req, res) => {
+router.get('/:postId', verifyToken, async (req, res) => {
     try {
-        const course = await Course.find({ post: req.params.id })
-        res.json({ success: true, course })
+        const courses = await Course.find({ post: req.params.postId })
+        res.json({ success: true, courses })
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: 'Đã xãy ra lỗi rồi đại vương!' })

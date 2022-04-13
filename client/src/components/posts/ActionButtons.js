@@ -3,8 +3,10 @@ import playIcon from '../../assets/play-btn.svg'
 import editIcon from '../../assets/pencil.svg'
 import deleteIcon from '../../assets/trash.svg'
 import { PostContext } from '../../contexts/PostContext'
+import { CourseContext } from '../../contexts/CourseContext'
 import { AuthContext } from '../../contexts/AuthContext'
 import { useContext, useState } from 'react'
+import Link from 'react-bootstrap/Button'
 
 const ActionButtons = ({ url, _id,  }) => {
 	
@@ -18,11 +20,19 @@ const ActionButtons = ({ url, _id,  }) => {
 		findPost(postId)
 		setShowUpdatePostModal(true)
 	}
+
+	const openCourse = postId => {
+		window.location.assign('/course/' + postId);
+	}
 	 
 	if(roleid == 1)
 	return (
 		<>	
-			<Button className='post-button' href={url} target='_blank'>
+			{/* <Button className='post-button' onClick={getCourses.bind(this, _id)}>
+				<img src={playIcon} alt='play' width='32' height='32' />
+			</Button> */}
+			
+			<Button className='post-button' onClick={openCourse.bind(this, _id)}>
 				<img src={playIcon} alt='play' width='32' height='32' />
 			</Button>
 			
