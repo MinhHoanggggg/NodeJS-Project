@@ -60,6 +60,7 @@ Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZT
 
 ############################
 GET http://localhost:6969/api/course/62550fdcc516e99fd4d99482
+Content-Type: application/json
 Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5Nzc1MjQ3fQ.O2U_uR1e41LS-5ZjHN8jAmg-dTTEhMXXyLRgx_YH_38
 
 ############################
@@ -68,7 +69,7 @@ Content-Type: application/json
 Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5Nzc1MjQ3fQ.O2U_uR1e41LS-5ZjHN8jAmg-dTTEhMXXyLRgx_YH_38
 
 {
-    "title":"C#",
+    "title":"pascal",
     "description": "Ông trùm mongodb"
 }
 

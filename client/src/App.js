@@ -3,17 +3,19 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Auth from './views/Auth'
 import AuthContextProvider from './contexts/AuthContext'
 import Dashboard from './views/Dashboard'
+import Course from './views/Course'
 import ProtectedRoute from './components/routing/ProtectedRoute'
 import About from './views/About'
 import PostContextProvider from './contexts/PostContext'
 import trangchu from './views/trangchu'
-
+import CourseContextProvider from './contexts/CourseContext'
 
 function App() {
   return (
     <AuthContextProvider>
       <PostContextProvider>
-        <Router>
+        <CourseContextProvider>
+		<Router>
           <Switch>
             <Route exact path='/trangchu' component={trangchu} />
             <Route exact path='/' component={trangchu} />
@@ -22,6 +24,7 @@ function App() {
 				path='/login'
 				render={props => <Auth {...props} authRoute='login' />}
 			/>
+			
             <Route
 				exact
 				path='/register'
@@ -35,10 +38,12 @@ function App() {
 			/>
             
 			<ProtectedRoute exact path='/dashboard' component={Dashboard} />
+			<ProtectedRoute exact path='/course' component={Course} />
 			<ProtectedRoute exact path='/about' component={About} />
 
           </Switch>
         </Router>
+		</CourseContextProvider>
       </PostContextProvider>
     </AuthContextProvider>
   );

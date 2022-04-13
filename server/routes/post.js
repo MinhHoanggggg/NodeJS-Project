@@ -2,19 +2,17 @@ const express = require('express')
 const router = express.Router()
 const verifyToken = require('../middleware/auth')
 const Post = require('../models/Post')
-const Course = require('../models/Course')
 
-router.get('/', verifyToken, async (req, res) => {
-    try {
-        const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
-        console.log(req.roleid);
-        res.json({ success: true, posts })
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ success: false, message: 'Internal error server 12' })
-    }
+// router.get('/', verifyToken, async (req, res) => {
+//     try {
+//         const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
+//         res.json({ success: true, posts })
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).json({ success: false, message: 'Internal error server' })
+//     }
 
-})
+// })
 
 router.get('/getAll', verifyToken, async (req, res) => {
     try {
