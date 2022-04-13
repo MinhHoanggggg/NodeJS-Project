@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {Alert} from 'reactstrap'
 
 const trangchu = () => {
     return (
@@ -20,7 +19,7 @@ const trangchu = () => {
                             </Button>
                             <div className='nam an' >
                             <p >
-                        Don't have an account?
+                            Don't have an account?
                             <Link to='/login'>
                                 <Button variant='info' size='sm' className='btn-regis ml-5'>DangNhap</Button>
                             </Link>
@@ -34,15 +33,15 @@ const trangchu = () => {
                             </Link>
                         </p>
                         <p >
-                        Đăng Kí Khóa Tập Miễn Phí?
+                        Đăng Kí Khóa Học Miễn Phí?
                         <Link to='/registerKH'>
-                            <Button variant='info' size='sm' Redirect ='/login'  className='btn-regis ml-5'>Đăng Kí Khóa Tập Miễn Phí</Button>
+                            <Button variant='info' size='sm' Redirect ='/login'  className='btn-regis ml-5'>Đăng Kí Khóa Học Miễn Phí</Button>
 
                         </Link>
                         
                         </p>
                         <p >
-                            Xem các khóa tập
+                            Xem các khóa hập
                             <Link to='/dashboard'>
                                 <Button variant='info' size='sm' className='btn-regis ml-5'>Xem ngay</Button>
                             </Link>

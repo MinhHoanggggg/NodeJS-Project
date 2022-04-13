@@ -3,7 +3,6 @@ import { AuthContext } from '../contexts/AuthContext'
 import { useContext, useEffect } from 'react'
 import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Toast from 'react-bootstrap/Toast'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
@@ -15,8 +14,9 @@ import addIcon from '../assets/plus-circle-fill.svg'
 import AddPostModal from '../components/posts/AddPostModal'
 
 const Dashboard = () => {
+
 	// Contexts
-	const {authState: {user: { username, roleid }}} = useContext(AuthContext)
+	const {authState: {user: { roleid }}} = useContext(AuthContext)
 	
 	const {
 		postState: { post, posts, postsLoading },
@@ -36,7 +36,9 @@ const Dashboard = () => {
 				<Spinner animation='border' variant='info' />
 			</div>
 		)
-	} else if ( roleid==1) {
+	} 
+	
+	else if ( roleid==1) {
 		body = (
 			<>
 				<Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
@@ -46,12 +48,14 @@ const Dashboard = () => {
 						</Col>
 					))}
 				</Row>
-				<OverlayTrigger placement='left' overlay={<Tooltip>THÊM KHÓA TẬP THỂ DỤC  </Tooltip>}>
+
+				<OverlayTrigger placement='left' overlay={<Tooltip>THÊM KHÓA HỌC</Tooltip>}>
+					
 				<Button className='btn-floating' onClick={setShowAddPostModal.bind(this,true)}>
 					<img src={addIcon} alt="add-post" width='60'height='60'/>
 				</Button>
-				</OverlayTrigger>
-                
+
+				</OverlayTrigger>    
 			</>
 		)
 		
@@ -70,7 +74,7 @@ const Dashboard = () => {
 			</>	)
 }
 
-return <div className='landing1'> <h1>{body} </h1> 
+return <div className='landing1'><h1>{body} </h1> 
 
 <AddPostModal />
 {post !== null && <UpdatePostModal /> }
@@ -84,9 +88,11 @@ return <div className='landing1'> <h1>{body} </h1>
 			delay={3000}
 			autohide
 			>
+				
 		<Toast.Body>
 			<strong>{message}</strong>
 		</Toast.Body>
+
 	</Toast>
 </div>
 

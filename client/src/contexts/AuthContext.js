@@ -8,6 +8,7 @@ export const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
     const [authState, dispatch] = useReducer(authReducer, { authLoading: true, isAuthenticated: false, user: null })
+    
     //Authenticate user
     const loadUser = async () => {
 		if (localStorage[LOCAL_STORAGE_TOKEN_NAME]) {
@@ -32,7 +33,7 @@ const AuthContextProvider = ({ children }) => {
 		}
 	}
 
-useEffect(()=> loadUser(),[])
+    useEffect(()=> loadUser(),[])
 
     //Login
     const loginUser = async userForm => { 

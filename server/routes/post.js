@@ -27,18 +27,6 @@ router.get('/getAll', verifyToken, async (req, res) => {
 
 })
 
-router.get('/getCourse', verifyToken, async (req, res) => {
-    try {
-
-        const course = await Course.find({ post: req._id})
-        res.json({ success: true, course })
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ success: false, message: 'Internal error server 12' })
-    }
-
-})
-
 //add
 router.post('/add', verifyToken, async (req, res) => { 
     const { title, description, status } = req.body
@@ -66,10 +54,11 @@ router.post('/add', verifyToken, async (req, res) => {
     }
 })
 
-router.put('/update:id', verifyToken, async (req, res) => {
+router.put('/update/:id', verifyToken, async (req, res) => {
     const { title, description, status } = req.body
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
+        
     try {
         
         let updatedPost = {
@@ -92,6 +81,7 @@ router.put('/update:id', verifyToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' })
     }
 })
+
 
 router.delete('/delete:id', verifyToken, async (req, res) => {
     try {

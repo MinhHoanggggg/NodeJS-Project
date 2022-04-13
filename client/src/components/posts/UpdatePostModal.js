@@ -19,7 +19,7 @@ const UpdatePostModal = () => {
 
 	useEffect(() => setUpdatedPost(post), [post])
 
-	const { title, description, url, status } = updatedPost
+	const { title, description, status } = updatedPost
 
 	const onChangeUpdatedPostForm = event =>
 		setUpdatedPost({ ...updatedPost, [event.target.name]: event.target.value })
@@ -39,58 +39,43 @@ const UpdatePostModal = () => {
 	return (
 		<Modal show={showUpdatePostModal} onHide={closeDialog}>
 			<Modal.Header closeButton>
-				<Modal.Title>Thông Tin Khóa Tập</Modal.Title>
+				<Modal.Title>Thông tin khóa học</Modal.Title>
 			</Modal.Header>
 			<Form onSubmit={onSubmit}>
 				<Modal.Body>
 					<Form.Group>
 						<Form.Control
 							type='text'
-							placeholder='Tên Khóa Tập'
+							placeholder='Tên Khóa học'
 							name='title'
 							required
 							aria-describedby='title-help'
 							value={title}
 							onChange={onChangeUpdatedPostForm}
 						/>
-						<Form.Text id='title-help' muted>
-							Ghi Chú
-						</Form.Text>
 					</Form.Group>
-					<Form.Group>
+
+					<Form.Group className='mt-2'>
 						<Form.Control
 							as='textarea'
 							rows={3}
-							placeholder='Ghi Chú'
+							placeholder='Mô tả'
 							name='description'
 							value={description}
 							onChange={onChangeUpdatedPostForm}
 						/>
 					</Form.Group>
-					<Form.Group>
-                    <Form.Text id='title-help' muted>
-							Xem thêm video về khóa tập
-						</Form.Text>
-						<Form.Control
-							type='text'
-                            aria-describedby='title-help'
-							placeholder='Link Video Khóa Tập'
-							name='url'
-							value={url}
-							onChange={onChangeUpdatedPostForm}
-						/>
-                       
-					</Form.Group>
-					<Form.Group>
+
+					<Form.Group className='mt-2'>
 						<Form.Control
 							as='select'
 							value={status}
 							name='status'
 							onChange={onChangeUpdatedPostForm}
 						>
-							<option value='GYM KÈM PT'>GYM KÈM PT</option>
-							<option value='YOGA KÈM PT'>YOGA KÈM PT</option>
-							<option value='TỰ TẬP'>TỰ TẬP </option>
+							<option value='NHẬP MÔN'>NHẬP MÔN</option>
+							<option value='TRUNG BÌNH'>TRUNG BÌNH</option>
+							<option value='NÂNG CAO'>NÂNG CAO</option>
 						</Form.Control>
 					</Form.Group>
 				</Modal.Body>

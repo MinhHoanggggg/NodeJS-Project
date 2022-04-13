@@ -300,3 +300,27 @@ button.post-button.btn:active {
     margin-right: 3px;
     margin-bottom: 5px;
 }
+/* Add new post tooltip */
+.tooltip {
+	background: transparent;
+}
+
+.tooltip .arrow::before {
+	border-left-color: #78c2ad;
+}
+
+.tooltip-inner {
+	background: #78c2ad;
+}
+
+/* Post border thicker */
+.border-success,
+.border-warning,
+.border-danger {
+	border-width: 2px;
+}
+
+/* Post title */
+.post-title {
+	margin-bottom: 0.5rem;
+}

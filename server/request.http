@@ -11,7 +11,7 @@ POST http://localhost:6969/api/auth/login
 Content-Type: application/json
 
 {
-    "username":"1",
+    "username":"minhhoangdeptrai",
     "password":"1"
 }
 
@@ -27,20 +27,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjRlN
 # }
 
 ###
-GET http://localhost:5000/api/posts//getAll
+GET http://localhost:6969/api/post/getAll
 Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZTE0MzZmNzBjYTQ5NWU2NTJlNjIiLCJpYXQiOjE2NDg3ODE0NjZ9.g3WRLP1ZIF115mY0KZ_irclBS6hvWQTi5oX1S2uETMo
 
 ###
-PUT  http://localhost:5000/api/posts/624801e73b48d4944703f5bd
+PUT http://localhost:6969/api/post/update:62546065c5c0764bed8328ba
 Content-Type: application/json
-Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZTE0MzZmNzBjYTQ5NWU2NTJlNjIiLCJpYXQiOjE2NDg3ODE0NjZ9.g3WRLP1ZIF115mY0KZ_irclBS6hvWQTi5oX1S2uETMo
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5NzQxMjQ5fQ.SfWrLX2UX4p3LsBIG3aB7FTYQvGGCO2BsZo43D0RcmE
 
 {
     "title":"Vue",
     "description":"Hihi",
-    "url":"https://youtube.com",
     "status":"LEARNING"
 }
+
 #######################
 
 POST http://localhost:6969/api/post/add
@@ -55,7 +55,34 @@ Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjU0ND
 }
 
 ###
-DELETE http://localhost:5000/api/posts/624801e73b48d4944703f5bd
+DELETE http://localhost:5000/api/post/62546065c5c0764bed8328ba
 Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ1ZTE0MzZmNzBjYTQ5NWU2NTJlNjIiLCJpYXQiOjE2NDg3ODE0NjZ9.g3WRLP1ZIF115mY0KZ_irclBS6hvWQTi5oX1S2uETMo
 
+############################
+GET http://localhost:6969/api/course/62550fdcc516e99fd4d99482
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5Nzc1MjQ3fQ.O2U_uR1e41LS-5ZjHN8jAmg-dTTEhMXXyLRgx_YH_38
 
+############################
+POST http://localhost:6969/api/course/add/62550fdcc516e99fd4d99482
+Content-Type: application/json
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5Nzc1MjQ3fQ.O2U_uR1e41LS-5ZjHN8jAmg-dTTEhMXXyLRgx_YH_38
+
+{
+    "title":"C#",
+    "description": "Ông trùm mongodb"
+}
+
+#################################
+PUT http://localhost:6969/api/course/update/625593031cba5e986ebb2157
+Content-Type: application/json
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5Nzc1MjQ3fQ.O2U_uR1e41LS-5ZjHN8jAmg-dTTEhMXXyLRgx_YH_38
+
+{
+    "title":"C#",
+    "description": "Ông trùm mongodb HUTECH"
+}
+
+#######################
+DELETE http://localhost:6969/api/course/delete/625593031cba5e986ebb2157
+Content-Type: application/json
+Authorization: Beare eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjQ4MDgyZGI1YjYwZDJhNWJmZGEwNzgiLCJyb2xlaWQiOiIxIiwiaWF0IjoxNjQ5Nzc1MjQ3fQ.O2U_uR1e41LS-5ZjHN8jAmg-dTTEhMXXyLRgx_YH_38

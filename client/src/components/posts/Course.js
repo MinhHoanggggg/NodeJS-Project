@@ -6,22 +6,18 @@ import ActionButtons from './ActionButtons'
 import { AuthContext } from '../../contexts/AuthContext'
 import { useContext, useEffect } from 'react'
 
-const Course = ({ post: { _id, status}  }) => (
+const Course = ({ post: { _id}  }) => (
 
 	<Card
-		className='shadow'
-		border={
-			status ==='NHẬP MÔN' ? 'success' : status === 'TRUNG BÌNH' ? 'warning' : 'danger'
-		}
 	>
 		<Card.Body>
 			<Card.Title>
 				<Row>
 					<Col>
 						<p className='post-title'>{title}</p>
-						<Badge bg={status === 'NHẬP MÔN' ? 'success': (status === 'TRUNG BÌNH' ? 'warning': 'danger')}
+						<Badge
 						>
-							{status}
+							Xem danh sách bài học
 						</Badge>
 					</Col>
 					<Col className='text-right'>
