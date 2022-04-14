@@ -3,17 +3,6 @@ const router = express.Router()
 const verifyToken = require('../middleware/auth')
 const Post = require('../models/Post')
 
-// router.get('/', verifyToken, async (req, res) => {
-//     try {
-//         const posts = await Post.find({ user: req.userId }).populate('user', ['username'])
-//         res.json({ success: true, posts })
-//     } catch (error) {
-//         console.log(error)
-//         res.status(500).json({ success: false, message: 'Internal error server' })
-//     }
-
-// })
-
 router.get('/getAll', verifyToken, async (req, res) => {
     try {
         const posts = await Post.find({  })
@@ -22,12 +11,11 @@ router.get('/getAll', verifyToken, async (req, res) => {
         console.log(error)
         res.status(500).json({ success: false, message: 'Internal error server 11 hehe' })
     }
-
 })
 
 //add
 router.post('/add', verifyToken, async (req, res) => { 
-    const { title, description, status } = req.body
+    const { title, description, status, img } = req.body
 
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
@@ -38,6 +26,7 @@ router.post('/add', verifyToken, async (req, res) => {
             title, 
             description,
             status,
+            img,
             user: req.userId
         })
 
@@ -53,7 +42,7 @@ router.post('/add', verifyToken, async (req, res) => {
 })
 
 router.put('/update/:id', verifyToken, async (req, res) => {
-    const { title, description, status } = req.body
+    const { title, description, status, img } = req.body
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
         
@@ -62,7 +51,8 @@ router.put('/update/:id', verifyToken, async (req, res) => {
         let updatedPost = {
             title, 
             description,
-            status
+            status,
+            img
         }
 
         const postUpdateCondition = { _id: req.params.id, user: req.userId }
@@ -79,7 +69,6 @@ router.put('/update/:id', verifyToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' })
     }
 })
-
 
 router.delete('/delete:id', verifyToken, async (req, res) => {
     try {

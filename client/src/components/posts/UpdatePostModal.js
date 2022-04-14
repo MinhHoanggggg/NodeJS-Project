@@ -19,7 +19,7 @@ const UpdatePostModal = () => {
 
 	useEffect(() => setUpdatedPost(post), [post])
 
-	const { title, description, status } = updatedPost
+	const { title, description, status, img } = updatedPost
 
 	const onChangeUpdatedPostForm = event =>
 		setUpdatedPost({ ...updatedPost, [event.target.name]: event.target.value })
@@ -68,6 +68,17 @@ const UpdatePostModal = () => {
 
 					<Form.Group className='mt-2'>
 						<Form.Control
+							as='textarea'
+							rows={7}
+							placeholder='Mô tả'
+							name='img'
+							value={img}
+							onChange={onChangeUpdatedPostForm}
+						/>
+					</Form.Group>
+
+					<Form.Group className='mt-2'>
+						<Form.Control
 							as='select'
 							value={status}
 							name='status'
@@ -84,7 +95,7 @@ const UpdatePostModal = () => {
 						Hủy
 					</Button>
 					<Button variant='primary' type='submit'>
-						Thêm
+						Quất
 					</Button>
 				</Modal.Footer>
 			</Form>

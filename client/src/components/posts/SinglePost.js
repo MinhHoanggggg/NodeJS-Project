@@ -3,35 +3,33 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
 import ActionButtons from './ActionButtons'
-import { AuthContext } from '../../contexts/AuthContext'
-import { useContext, useEffect } from 'react'
 
-const SinglePost = ({ post: { _id, status, title, description, url, user}  }) => (
+const SinglePost = ({ post: { _id, status, title, description, url, img}  }) => (
 
 	<Card
 		className='shadow'
-		border={
-			status ==='NHẬP MÔN' ? 'success' : status === 'TRUNG BÌNH' ? 'warning' : 'danger'
-		}
 	>
 		<Card.Body>
 			<Card.Title>
 				<Row>
-					<Col>
-						<p className='post-title'>{title}</p>
-						<Badge bg={status === 'NHẬP MÔN' ? 'success': (status === 'TRUNG BÌNH' ? 'warning': 'danger')}
-						>
-						{status}
-						</Badge>
+					<Col className='sm-6'>
+					<img style={{ width: '200px', height: '200px'}} src={img} />
 					</Col>
 					
-					<Col className='text-right'>
-						<ActionButtons url={url} _id={_id} />
-						{/* <p className='text-right'>ID :{user}</p> */}
+					<Col className='text-right sm-6'>
+						<Badge bg={status === 'NHẬP MÔN' ? 'success': (status === 'TRUNG BÌNH' ? 'warning': 'danger')}>
+							{status}
+						</Badge>
+						<Card.Text className='post-title mt-3'>{title}</Card.Text>
+						<Card.Text className='post-des'>{description}</Card.Text>
 					</Col>
 				</Row>
+				<div className='mt-3 text-center'>
+					<ActionButtons url={url} _id={_id} />
+				</div>
+				
 			</Card.Title>
-			<Card.Text>{description}</Card.Text>
+			
 		</Card.Body>
 	</Card>
 )

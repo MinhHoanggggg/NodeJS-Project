@@ -12,6 +12,8 @@ import SingleCourse from '../components/courses/SingleCourse'
 import UpdateCourseModal from '../components/courses/UpdateCourseModal'
 import addIcon from '../assets/plus-circle-fill.svg'
 import AddCourseModal from '../components/courses/AddCourseModal'
+import { useParams } from 'react-router-dom';
+import Banner from '../components/layout/Banner'
 
 const Course = () => {
 
@@ -26,9 +28,10 @@ const Course = () => {
 		setShowToast
 	} = useContext(CourseContext)
 
-    useEffect(() => getCourses(), []);
+	let body = null;
+	let { id } = useParams();
 
-    let body = null
+    useEffect(() => getCourses(id), [id]);
 
     if (coursesLoading) {
 		body = (
@@ -38,72 +41,74 @@ const Course = () => {
 		)
 	} 
 
-//     else if ( roleid == 1) {
-// 		body = (
-// 			<>
-// 				<Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-// 					{courses.map(course => (
-// 						<Col key={course._id} className='my-2'>
-// 							<SingleCourse course={course} />
-// 						</Col>
-// 					))}
-// 				</Row>
-
-// 				<OverlayTrigger placement='left' overlay={<Tooltip>Thêm bài học</Tooltip>}>
+    else if ( roleid == 1) {
+		body = (
+			<>
+                <Banner />
+				<h2 className='text-center mt-4'>Danh sách bài học</h2>
+				<div className='container-sm'>
+					<Row className='row-cols-1 row-cols-md-1 mx-auto mt-3'>
+						{courses.map(course => (
+							<Col key={course._id} className='my-2'>
+								<SingleCourse course={course} />
+							</Col>
+						))}
+					</Row>
+				</div>
+				
+				<OverlayTrigger placement='left' overlay={<Tooltip>Thêm bài học</Tooltip>}>
 					
-// 				<Button className='btn-floating' onClick={setShowAddCourseModal.bind(this,true)}>
-// 					<img src={addIcon} alt="add-course" width='60'height='60'/>
-// 				</Button>
+				<Button className='btn-floating' onClick={setShowAddCourseModal.bind(this, true)}>
+					<img src={addIcon} alt="add-course" width='60'height='60'/>
+				</Button>
 
-// 				</OverlayTrigger>    
-// 			</>
-// 		)	
-// 	} 
+				</OverlayTrigger>    
+			</>
+		)	
+	} 
 
     else
 
-//     {
+    {
 		
-// 		body = (
-// 			<>
-// 				<Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
-// 					{courses.map(course => (
-// 						<Col key={course._id} className='my-2'>
-// 							<SingleCourse course={course} />
-// 						</Col>
-// 					))}
-// 				</Row>
-// 			</>	)
-//     }
+		body = (
+			<>
+				<Banner />
+				<h2 className='text-center mt-4'>Danh sách bài học</h2>
+				<div className='container-sm'>
+					<Row className='row-cols-1 row-cols-md-1 mx-auto mt-3'>
+						{courses.map(course => (
+							<Col key={course._id} className='my-2'>
+								<SingleCourse course={course} />
+							</Col>
+						))}
+					</Row>
+				</div>
+			</>	)
+    }
 
-body = (
-	<>
-		<h1>hehehehehe</h1>
-	</>
-)
-return <div className='landing1'><h1> {body} </h1> </div>
+return <div className='landing1'>
+            <h1> {body} </h1> 
+			
+			<AddCourseModal postId={id} />
+            {course !== null && <UpdateCourseModal /> }
 
-// return <div className='landing1'>
-//             <h1> {body} </h1> 
-//             <AddCourseModal />
-//             {course !== null && <UpdateCourseModal /> }
-
-// 	<Toast show={show} style={{position: 'fixed', top:'20%', right:'10px'}} className={`bg-${type} text-white`}
-// 		onClose={setShowToast.bind(this,{
-// 			show: false, 
-// 			message: '', 
-// 			type: null
-// 			})}
-// 			delay={3000}
-// 			autohide
-// 			>
+	<Toast show={show} style={{position: 'fixed', top:'20%', right:'10px'}} className={`bg-${type} text-white`}
+		onClose={setShowToast.bind(this,{
+			show: false, 
+			message: '', 
+			type: null
+			})}
+			delay={3000}
+			autohide
+			>
             	
-// 		<Toast.Body>
-// 			<strong>{message}</strong>
-// 		</Toast.Body>
+		<Toast.Body>
+			<strong>{message}</strong>
+		</Toast.Body>
 
-// 	</Toast>
-// </div>
+	</Toast>
+</div>
 
 }
 

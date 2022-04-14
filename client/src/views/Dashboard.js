@@ -12,6 +12,7 @@ import SinglePost from '../components/posts/SinglePost'
 import UpdatePostModal from '../components/posts/UpdatePostModal'
 import addIcon from '../assets/plus-circle-fill.svg'
 import AddPostModal from '../components/posts/AddPostModal'
+import videobg from '../assets/videobg.png'
 
 const Dashboard = () => {
 
@@ -38,9 +39,24 @@ const Dashboard = () => {
 		)
 	} 
 	
-	else if ( roleid==1) {
+	else if (roleid == 1) {
 		body = (
-			<>
+			<>	
+
+					<div className="page-banner">
+                        <div className='hvrbox'>
+                            <img src={videobg} alt="Mountains" class="hvrbox-layer_bottom" />
+                            <div class="hvrbox-layer_top">
+                                <div class="container">
+                                    <div class="overlay-text text-center">
+                                        <h2 style={{color: 'white'}}>The Future Begins Here</h2>
+                                        <h5 style={{color: 'white'}}>Đã có hơn 136,554++ lượt học và tìm kiếm thông tin tại 3H.com!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				<h2 className="text-center mt-3">Danh sách khóa học</h2>
 				<Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
 					{posts.map(post => (
 						<Col key={post._id} className='my-2'>
@@ -62,7 +78,21 @@ const Dashboard = () => {
 	} else {
 		
 		body = (
-			<>
+			<>	
+					<div className="page-banner">
+                        <div className='hvrbox'>
+                            <img src={videobg} alt="Mountains" class="hvrbox-layer_bottom" />
+                            <div class="hvrbox-layer_top">
+                                <div class="container">
+                                    <div class="overlay-text text-center">
+                                        <h2 style={{color: 'white'}}>The Future Begins Here</h2>
+                                        <h5 style={{color: 'white'}}>Đã có hơn 136,554++ lượt học và tìm kiếm thông tin tại 3H.com!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				<h2 className="text-center mt-3">Danh sách khóa học</h2>
 				<Row className='row-cols-1 row-cols-md-3 g-4 mx-auto mt-3'>
 					{posts.map(post => (
 						<Col key={post._id} className='my-2'>
@@ -76,8 +106,9 @@ const Dashboard = () => {
 
 return <div className='landing1'><h1>{body} </h1> 
 
-<AddPostModal />
-{post !== null && <UpdatePostModal /> }
+	<AddPostModal /> 
+	
+	{post !== null && <UpdatePostModal /> }
 
 	<Toast show={show} style={{position: 'fixed',top:'20%', right: '10px' }} className={`bg-${type} text-white`}
 		onClose={setShowToast.bind(this,{

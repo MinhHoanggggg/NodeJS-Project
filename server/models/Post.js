@@ -12,6 +12,9 @@ const PostSchema = new Schema({
     status: {
         type: String
     },
+    img: {
+        type: String
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users' ,

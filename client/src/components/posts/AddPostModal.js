@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useContext, useState } from 'react'
 import { PostContext } from '../../contexts/PostContext'
+
 const AddPostModal = () => {
 
     //Contexts
@@ -11,10 +12,11 @@ const AddPostModal = () => {
     //State
     const [newPost, setNewPost] = useState({
       title: '',
-      description: ''
+      description: '',
+      img: ''
     })
 
-    const {title, description} = newPost
+    const {title, description, img} = newPost
     const onChangeNamePostForm = event => setNewPost({...newPost,[event.target.name]: event.target.value})
     const closeDialog = () => {
         resetAddPostData()
@@ -29,7 +31,7 @@ const AddPostModal = () => {
     }
 
     const resetAddPostData = () => {
-        setNewPost({ title:'', description: '', status:''})
+        setNewPost({ title:'', description: '', status:'', img:''})
         setShowAddPostModal(false)
     }
 
@@ -56,6 +58,14 @@ const AddPostModal = () => {
                         onChange={onChangeNamePostForm} />
                      </Form.Group>
 
+                     
+                    <Form.Group className='mt-2'>
+                        <Form.Control as ='textarea' rows={3} placeholder='Link hình ảnh'
+                        name='img'
+                        value={img}
+                        onChange={onChangeNamePostForm} />
+                     </Form.Group>
+
                      <Form.Group className='mt-2'>
 						<Form.Control
 							as='select'
@@ -67,6 +77,7 @@ const AddPostModal = () => {
 							<option value='NÂNG CAO'>NÂNG CAO</option>
 						</Form.Control>
 					</Form.Group>
+
                 </Modal.Body>
 
                 <Modal.Footer>

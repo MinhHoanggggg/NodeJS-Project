@@ -4,20 +4,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Dropdown from 'react-bootstrap/Dropdown';
 import FormControl from 'react-bootstrap/FormControl';
-import { AuthContext } from '../../contexts/AuthContext';
-import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 
-const NavbarMenu = () => {
-	const {
-		authState: {
-			user: { username }
-		},
-		logoutUser
-	} = useContext(AuthContext)
-
-	const logout = () => logoutUser();
+const NavbarHome = () => {
 
 	return (
 		<>
@@ -57,23 +47,13 @@ const NavbarMenu = () => {
 						</Form>	
 					</Nav>
 
-					<NavDropdown title={username} id="navbarScrollingDropdown">
-						<NavDropdown.Item href="/listproduct">Quản lí tài khoản</NavDropdown.Item>
-						<NavDropdown.Item href="#action4">Đổi mật khẩu</NavDropdown.Item>
-						<NavDropdown.Item href="#action5">
-							Something else
-						</NavDropdown.Item>
-						<NavDropdown.Item href="#action5">
-							Something else
-						</NavDropdown.Item>
+					<Link to='/login'>
+                       	<Button variant='info' size='sm' className='btn-regis ml-5 m-3'>Đăng nhập</Button>
+                   	</Link>	
 
-						<Dropdown.Divider />
-
-						<NavDropdown.Item onClick={logout}>
-							Đăng xuất
-						</NavDropdown.Item>
-
-					</NavDropdown>	
+					<Link to='/register'>
+                       	<Button variant='info' size='sm' className='btn-regis ml-5'>Đăng kí</Button>
+                   	</Link>	
 					
 					</Navbar.Collapse>
 				</Container>
@@ -82,4 +62,4 @@ const NavbarMenu = () => {
 	)
 }
 
-export default NavbarMenu
+export default NavbarHome

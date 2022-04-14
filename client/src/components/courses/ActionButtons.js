@@ -6,31 +6,35 @@ import { CourseContext } from '../../contexts/CourseContext'
 import { AuthContext } from '../../contexts/AuthContext'
 import { useContext, useState } from 'react'
 
-const ActionButtons = ({ url, _id }) => {
+const ActionButtons = ({ _id }) => {
 	
-	const { deleteCourse, findCourse, setShowUpdateCourseModal } = useContext(
-		CourseContext
-	)
+	const { deleteCourse, findCourse, setShowUpdateCourseModal } = useContext(CourseContext)
 	
-	const {authState: {user: { username, roleid }}} = useContext(AuthContext)
+	const {authState: {user: { roleid }}} = useContext(AuthContext)
+
+	const {courseState: { course }} = useContext(CourseContext)
 
 	const chooseCourse = courseId => {
 		findCourse(courseId)
 		setShowUpdateCourseModal(true)
 	}
+
+	const detailCourse = courseId => {
+		findCourse(courseId)
+		window.location.assign('/detailCourse/' + course.url);
+	}
 	 
 	if(roleid == 1)
 	return (
 		<>	
-			<Button className='post-button' href={url} target='_blank'>
-				<img src={playIcon} alt='play' width='32' height='32' />
+			<Button className="btn btn-info m-1" onClick={detailCourse.bind(this, _id)}>
+				Xem bài học
 			</Button>
-			
-			<Button className='post-button' onClick={chooseCourse.bind(this, _id)}>
-				<img src={editIcon} alt='edit' width='24' height='24' />
+			<Button className="btn m-1" onClick={chooseCourse.bind(this, _id)}>
+				Chỉnh sửa
 			</Button>
-			<Button className='post-button' onClick={deleteCourse.bind(this, _id)}>
-				<img src={deleteIcon} alt='delete' width='24' height='24' />
+			<Button className="btn btn-danger m-1" onClick={deleteCourse.bind(this, _id)}>
+				Xóa	
 			</Button>
 		</>
 	)
@@ -39,13 +43,12 @@ const ActionButtons = ({ url, _id }) => {
 	
 	{
 		return(<>      
-				<div id ="demo">Đăng kí khóa học ngay!</div>
-				<Button type="button" >
-					Đăng Kí Khóa Học
-				</Button>		
+					<Button className="btn btn-info m-1" onClick={detailCourse.bind(this, _id)}>
+						Xem bài học
+					</Button>
 				</>
 			)
-		};	
-}
+	};	
+};	
 
 export default ActionButtons

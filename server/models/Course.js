@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const Course = new Schema({
     title: String,
     description: String,
+    url: String,
     post: {
         type: Schema.Types.ObjectId,
         ref: 'posts' ,

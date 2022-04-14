@@ -1,6 +1,5 @@
 import LoginForm from '../components/auth/LoginForm'
 import RegisterForm from '../components/auth/RegisterForm'
-import DkkHForm from '../components/auth/DkKHForm'
 import { AuthContext } from '../contexts/AuthContext'
 import { useContext } from 'react'
 import {Redirect} from 'react-router-dom'
@@ -8,7 +7,9 @@ import Spinner from 'react-bootstrap/Spinner'
 
 const Auth = ({ authRoute }) => {
     const {authState: { authLoading, isAuthenticated }} = useContext(AuthContext)
-    let body
+    
+    let body;
+
     if (authLoading)
     body = (
         <div className='d-flex justify-content-center mt-2'>
@@ -27,7 +28,6 @@ const Auth = ({ authRoute }) => {
         <>
             {authRoute === 'login' && <LoginForm />}
             {authRoute === 'register' && <RegisterForm />}
-            {authRoute === 'registerKH' && <DkkHForm />}
         </>)
 
 

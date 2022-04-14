@@ -14,8 +14,8 @@ router.get('/:postId', verifyToken, async (req, res) => {
 })
 
 //add
-router.post('/add/:id', verifyToken, async (req, res) => { 
-    const { title, description } = req.body
+router.post('/add/', verifyToken, async (req, res) => { 
+    const { title, url, post } = req.body
 
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
@@ -24,8 +24,8 @@ router.post('/add/:id', verifyToken, async (req, res) => {
         
         const newCourse = new Course({
             title, 
-            description,
-            post: req.params.id
+            url,
+            post
         })
 
         await newCourse.save()
@@ -40,15 +40,15 @@ router.post('/add/:id', verifyToken, async (req, res) => {
 })
 
 router.put('/update/:id', verifyToken, async (req, res) => {
-    const { title, description } = req.body
+    const { title, url } = req.body
     if (!title)
         return res.status(400).json({ success: false, message: 'Title is require' })
         
     try {
         
         let updatedCourse = {
-            title, 
-            description,
+            title,
+            url
         }
 
         const courseUpdateCondition = { _id: req.params.id }
@@ -82,7 +82,7 @@ router.delete('/delete/:id', verifyToken, async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' })
 
     }
+
 })
 
 module.exports = router
-

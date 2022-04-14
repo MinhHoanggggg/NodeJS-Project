@@ -31,13 +31,13 @@ export const courseReducer = (state, action) => {
 			}
 
 		case FIND_COURSE:
-			return { ...state, course: payload }
+			return { ...state, 
+				course: payload }
 
 		case UPDATE_COURSE:
 			const newPosts = state.courses.map(course =>
 				course._id === payload._id ? payload : course
 			)
-
 			return {
 				...state,
 				courses: newPosts
